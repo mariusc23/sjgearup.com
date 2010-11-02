@@ -613,6 +613,7 @@ div.carousel-stories {
 }
 #carousel-menu ul li:last-child {
 	-moz-border-radius-bottomleft: 1.6em;
+	-webkit-border-bottom-left-radius: 1.6em;
 }
 #carousel-menu ul li.even {
 	background: url(images/carousel-menu2.png);
