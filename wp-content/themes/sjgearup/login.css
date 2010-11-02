@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* {
+	margin:0;
+	padding:0;
+}
+html {
+	background: #2b2825;
+}
+body {
+	backgorund-color: #2b2825;
+	background: -moz-linear-gradient(
+    center bottom,
+    rgb(43,40,37) 0%,
+    rgb(69,66,63) 100%);
+	background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(43,40,37)),
+    color-stop(1, rgb(69,66,63)));	
+	padding-top:30px;
+	font:11px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+}
+h1 a {
+	background: url(images/login/logo.png) no-repeat top center;
+	width:960px;
+	height:192px;
+	text-indent:-9999px;
+	overflow:hidden;
+	padding-bottom:15px;
+	display: none;
+}
+#nav {
+	text-shadow:rgba(0,0,0,1) 0 1px 0;
+}
+#backtoblog {
+	position:absolute;
+	top:30px;
+	left:0;
+	border-bottom: none;
+	background:#248b8f;
+	background: url(images/login/bar.png) repeat-x;
+	height:192px;
+	width:100%;
+}
+#backtoblog a {
+	text-indent: -1000em;
+	display:block;
+	background: url(images/login/logo.png) no-repeat;
+	width: 960px;
+	height: 192px;
+	margin: 0 auto;
+	padding: 0;
+}
+form {
+	-moz-border-radius:11px;
+	-khtml-border-radius:11px;
+	-webkit-border-radius:11px;
+	border-radius:5px;
+	background:#fff;
+	border:1px solid #e5e5e5;
+	-moz-box-shadow: #242221 0 4px 18px;
+	-webkit-box-shadow:#242221 0 4px 18px;
+	-khtml-box-shadow:#242221 0 4px 18px;
+	box-shadow:#242221 0 4px 18px;
+}
+#login {
+	margin: 20em auto;
+	margin-bottom: 7em;
+	width: 440px;
+}
+
+#login_error, .message {
+	margin:0 0 16px 8px;
+	border-width:1px;
+	border-style:solid;
+	padding:12px;
+	-moz-border-radius:3px;
+	-khtml-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+#nav {
+	margin:0 0 0 8px;
+	padding:16px;
+}
+#user_pass, #user_login, #user_email {
+	font-size:24px;
+	width:97%;
+	padding:3px;
+	margin-top:2px;
+	margin-right:6px;
+	margin-bottom:16px;
+	border:1px solid #e5e5e5;
+	background:#fbfbfb;
+}
+input {
+	color:#555;
+}
+.clear {
+	clear:both;
+}

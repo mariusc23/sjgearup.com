@@ -576,6 +576,12 @@ function mytheme_setup() {
 add_action( 'after_setup_theme', 'mytheme_setup' );
 
 
+// Custom login page.
+function custom_login() { 
+echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/login.css" />'; 
+}
+add_action('login_head', 'custom_login');
+
 // Add menu.
 add_action('admin_menu', 'create_help_page');
 function create_help_page() {
