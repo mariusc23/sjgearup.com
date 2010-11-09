@@ -1,0 +1,227 @@
+
+/* CSS Document */
+
+body { font-family:Arial, Helvetica, Verdana, Tahoma, sans-serif;
+ 
+margin:0;
+padding:0;
+border: 0;
+outline: 0;
+font-size: 100%;
+
+background: transparent;
+background-color:#aaaaaa;}  
+body
+ {
+ 	background:#aaaaaa url(images/background_gradient.png) repeat-x scroll 0 0;
+	}
+body {
+	line-height: 1;
+}
+html, div, span,head,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, font, img,
+small, strong, ol, ul, li
+ {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	background: transparent;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+
+
+
+ }
+ 
+.container {
+width: 885px;  
+margin: 0 auto;   
+ }  
+ 
+ 
+#main {
+    background: url(images/page_background.png) no-repeat scroll 0 0; 
+	margin:0 auto;
+	padding:0;
+	height:430px;
+}
+
+/*------header styles-----*/
+#header
+{
+	margin:auto;
+	margin-top:40px;
+	height:50px;
+	}
+#logo
+{
+	position:relative;
+	float:left;
+	padding-left:42px;
+	
+	}
+#contact_details
+{
+	float:right;
+	color:#333333;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:13px;
+	font-style:normal;
+	line-height:22px;
+	padding-right:42px;
+	text-align:right;
+	}
+
+#contact_details a
+{
+	color:#333333;
+	font-size:13px;
+	text-decoration:none;
+	letter-spacing:0.5px;
+	
+}
+
+/*------content styles-----*/	
+#content
+{
+	padding:10px 44px;
+}
+.text
+{
+	text-align:center;
+	margin-top:40px;
+	padding-bottom:40px;
+	border-bottom:1px solid #000000;
+}
+.text h2
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:30px;
+	color:#e5e5e5;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:lighter;
+	letter-spacing:2px;
+	}
+.counter
+{
+	background:url(images/counter_bg.png) no-repeat scroll center 57px;
+	width:797px;
+	height:150px;
+	border-top:1px solid #666666;
+	border-bottom:1px solid #000000;
+	text-align:center;
+	position:relative;
+
+	
+}
+.counter h3
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:14px;
+	color:#e5e5e5;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:lighter;
+	letter-spacing:1px;
+	margin-top:20px;
+
+}
+p.description
+{
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #000000;
+	font-size: 13.5px;
+	line-height: 19px;
+	color: #fff;
+	text-align: center;
+	padding: 30px 40px;
+	text-shadow: 1px 1px 3px #f1f1f1;
+}
+.details
+{
+	border-top:1px solid #666666;
+	height:120px;
+	float: left ; 
+	text-align: center; 
+	width: 100%; 
+	overflow: hidden ;
+	position: relative ; 
+	height:110px;
+}
+
+.details h3
+{
+	font-size:14px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:normal;
+	font-weight:lighter;
+	color:#e5e5e5;
+	letter-spacing:1px;
+	margin-top:15px;
+	}
+.social
+{
+	height:64px;
+	margin: 10px auto;
+	display: inline-block;
+	width: auto;
+	position: relative; 
+}
+.social a
+{
+	display: block;
+	float: left;
+	width:64px;
+	height:64px;
+	margin-right:20px;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+.social a.twitter
+{
+	background:url(images/twitter.png) no-repeat scroll 0 0;
+	
+	}
+.social a.flickr
+{
+	background:url(images/flickr.png) no-repeat scroll 0 0;
+	
+	}
+.social a.facebook
+{
+	background:url(images/facebook.png) no-repeat scroll 0 0;
+	
+	}
+.social a.youtube
+{
+	background:url(images/youtube.png) no-repeat scroll 0 0;
+	
+	}
+
+
+
+/* jQuery Countdown styles*/
+
+#defaultCountdown { width: 757px; height: 60px; }
+
+
+.hasCountdown {
+	text-align:center;
+	margin-left:20px;
+	margin-right:20px;
+	color:#E5E5E5;
+	margin-top:45px;
+	font-size:26px;
+	font-weight:normal;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	}
+

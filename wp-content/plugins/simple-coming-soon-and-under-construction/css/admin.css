@@ -1,0 +1,38 @@
+#cs-options	{ position: relative; }
+
+#cs-options h2	{ margin-bottom: 30px; }
+
+#cs-options select	{ margin: 0 0 20px 6px; }
+
+#cs-options .nav	{ position: absolute; top: 25px; right: 50px; text-align: right; }
+#cs-options .nav li	{ display: inline; padding: 0 5px; }
+#cs-options .nav li a	{ color: #656656; font-size: 11px; }
+
+#cs-options .description	{ color: #ff0000; padding: 0 0 20px 10px; width: 450px; }
+
+#cs-options h3	{ margin: 0 0 16px 4px; }
+#cs-options #steps	{ margin: 0 0 20px 15px; padding: 0 0 0 14px;}
+#cs-options #steps li	{ margin: 0 0 5px 0; padding: 0; }
+
+#cs-options #tabs		{ padding: 0 0 30px 0; } 
+#cs-options #tabs ul	{ margin: 0; overflow: hidden; width: 100%; }
+#cs-options #tabs ul li	{ border: 1px solid #ccc; float: left; margin: 0; padding: 8px 14px; width: auto; position: relative; top: 1px; z-index: 100; border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; }
+#cs-options #tabs ul li.ui-state-active	{ background: #f1f1f1; }
+#cs-options #tabs ul a	{ text-decoration: none; }
+#cs-options #tabs div	{ border: 1px solid #ccc; padding: 20px; width: 700px; border-radius: 0px 4px 0 0; -webkit-border-radius: 0px 4px 0 0; -moz-border-radius: 0px 4px 0 0; }
+
+#cs-options #tabs .theme-options	{ border: 0; margin: 0; padding: 0; }
+#cs-options #tabs .theme-options h4	{ margin-top: 0; }
+#cs-options #tabs .theme-options div	{ border: 0; border-left: 1px solid #21759b; margin: 0 0 30px 0; padding: 10px 0 0 17px; }
+#cs-options #tabs .theme-options label	{ display: block; margin: 0 0 5px 0; }
+#cs-options #tabs .theme-options input,
+#cs-options #tabs .theme-options textarea	{ margin: 0 0 15px 0; width: 300px; }
+#cs-options #tabs .theme-options textarea	{ height: 80px; }
+#cs-options #tabs .theme-options .explanation	{ margin-top: -15px; font-size: 10px; color: #ccc; }
+
+#cs-options input.button	{ width: auto !important; }
+
+#cs-options #scs-submit	{ position: absolute; top: 86px; left: 632px; }
+
+#cs-options #credits	{ color: #d54e21; font-size: 11px; }
+
