@@ -451,6 +451,7 @@ div.menu li {
 #access ul li.current-menu-item > a,
 #access ul li.current-menu-parent > a {
 	color: #fff;
+	background-color: #269a9e;
 }
 * html #access ul li.current_page_item a,
 * html #access ul li.current-menu-ancestor a,
@@ -458,6 +459,7 @@ div.menu li {
 * html #access ul li.current-menu-parent a,
 * html #access ul li a:hover {
 	color: #fff;
+	background-color: #269a9e;
 }
 /* =Title in Menu
 -------------------------------------------------------------- */
@@ -1450,7 +1452,18 @@ h3#reply-title {
 /* Footer widget areas */
 #footer-widget-area {
 }
-
+#footer-widget-area #fourth {
+	width: 960px;
+	height: 48px;
+	background: url(images/sqbg.png) repeat #ccc;
+}
+#fourth ul {
+	margin: 0 auto;
+	width: 800px;
+}
+#fourth li {
+	text-align: center;
+}
 
 /* =Footer
 -------------------------------------------------------------- */
@@ -1461,7 +1474,7 @@ h3#reply-title {
 #footer {
 }
 div#footer {
-	height: 241px;
+	height: 290px;
 }
 #colophon {
 	overflow: hidden;
