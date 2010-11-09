@@ -592,7 +592,8 @@ function create_help_page() {
   add_submenu_page('themes.php?goto=help-page', __('Post to blog','post-blog'), __('Post to blog','post-blog'), 'manage_options', 'themes.php?goto=help-page-four');
   add_submenu_page('themes.php?goto=help-page', __('Post to carousel','post-carousel'), __('Post to carousel','post-carousel'), 'manage_options', 'themes.php?goto=help-page-five');
   add_submenu_page('themes.php?goto=help-page', __('Insert img in post','insert-img'), __('Insert img in post','insert-img'), 'manage_options', 'themes.php?goto=help-page-six');
-  add_submenu_page('themes.php?goto=help-page', __('Edit menu','edit-menu'), __('Edit menu','edit-menu'), 'manage_options', 'themes.php?goto=help-page-seven');
+  add_submenu_page('themes.php?goto=help-page', __('Post video on home','post-video'), __('Post video on home','post-video'), 'manage_options', 'themes.php?goto=help-page-seven');
+  add_submenu_page('themes.php?goto=help-page', __('Edit menu','edit-menu'), __('Edit menu','edit-menu'), 'manage_options', 'themes.php?goto=help-page-eight');
   
 }
 
@@ -644,6 +645,9 @@ function redirect_from_admin_menu($value) {
         wp_safe_redirect('/wp-admin/');
         break;
 	  case 'help-page-seven':
+        wp_redirect("../post-video");
+        break;
+	  case 'help-page-eight':
         wp_redirect("../editing-the-menu");
         break;
       default:
@@ -653,11 +657,8 @@ function redirect_from_admin_menu($value) {
     exit;
   }
 }
-
-  //<li><a href="#post-new">Adding a new post</a></li>
- // <li><a href="#page-new">Adding a new page</a></li>
- // <li><a href="#post-schedule">Scheduling new post</a></li>
-  //<li><a href="#post-blog">Posting to your blog</a></li>
-  //<li><a href="#post-carousel">Posting to the carousel</a></li>
-  //<li><a href="#post-image">Inserting an image in a post</a></li>
-  //<li><a href="#edit-menu">Editing the menu</a></li>
+// Add favicon to admin area
+function admin_favicon() {
+	echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/favicon.ico" />';
+}
+add_action('admin_head', 'admin_favicon');
