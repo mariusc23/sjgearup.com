@@ -662,3 +662,5 @@ function admin_favicon() {
 	echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.get_bloginfo('stylesheet_directory').'/favicon.ico" />';
 }
 add_action('admin_head', 'admin_favicon');
+
+include_once('contact_form.php');

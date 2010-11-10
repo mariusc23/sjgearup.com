@@ -1,5 +1,5 @@
 <?php
-define('FROM_CONTACT', 'Titu Andreescu <tandreescu@gmail.com>');
+define('FROM_CONTACT', 'Lorri Capizzi <marius@craciunoiu.net>');
 /* Contact form handling here */
 if ($_POST['contact'] || $_POST['contact_email']) {
     require_once( '../../../wp-load.php' );
@@ -14,8 +14,8 @@ if ($_POST['contact'] || $_POST['contact_email']) {
         }
     }
 
-    if (!$contact_invalid && !$_COOKIE['awesomemath_contact']) {
-        $comment_post_ID = 228;
+    if (!$contact_invalid && !$_COOKIE['sjgearup_contact']) {
+        $comment_post_ID = 335;
         $comment_author = $contact_data['name'];
         $comment_author_email = $contact_data['email'];
         $comment_author_url = '';
@@ -27,19 +27,19 @@ if ($_POST['contact'] || $_POST['contact_email']) {
         $commentdata = compact('comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content', 'comment_type', 'comment_parent', 'user_ID');
         $comment_id = wp_new_comment( $commentdata );
         $comment_approved = $wpdb->get_results( "SELECT (comment_approved = 'spam') AS spam FROM wp_comments WHERE comment_ID = '{$comment_id} LIMIT 1;'");
-        setcookie('awesomemath_contact', 1, time() + 300, '/');
+        setcookie('sjgearup_contact', 1, time() + 300, '/');
         if ($comment_id && !$comment_approved[0]->spam) {
             $success = true;
             // not spam!
             $contact_headers = "From: {$contact_data['name']} <{$contact_data['email']}>\r\nBCC: mariuscraciunoiu@gmail.com,paulcraciunoiu@gmail.com\r\n"
                 . "Content-Type: text/html; charset=iso-8859-1\r\n";
-            if (!wp_mail(FROM_CONTACT, 'AwesomeMath Contact Form Message'
+            if (!wp_mail(FROM_CONTACT, 'SJ Gear Up Contact Form Message'
                 , '<pre style="font-family: Helvetica, Arial, sans-serif">' . $contact_data['message'] . '</pre>', $contact_headers)) {
                 $success = false;
             }
             $contact_headers = "From: " . FROM_CONTACT . "\r\n" . 'Reply-To: ' . FROM_CONTACT . "\r\nContent-Type: text/html; charset=iso-8859-1\r\n";
-            if (!wp_mail("{$contact_data['name']} <{$contact_data['email']}>", 'Thank you for contacting AwesomeMath'
-                , '<p>Thank you for contacting AwesomeMath. We will get back to you shortly.</p>
+            if (!wp_mail("{$contact_data['name']} <{$contact_data['email']}>", 'Thank you for contacting SJ Gear Up'
+                , '<p>Thank you for contacting SJ Gear Up. We will get back to you shortly.</p>
 
 <p>Below is a copy of your message.
 If for any reason we do not get back to you soon, simply reply to this email.</p>
