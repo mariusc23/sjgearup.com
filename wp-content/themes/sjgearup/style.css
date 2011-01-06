@@ -534,14 +534,14 @@ div#carousel {
 }
 div#carousel #carousel-menu {
 	float: right;
-	height: 200px;
-	width: 234px;
+	height: 104px;
+	width: 114px;
 }
 div#carousel .carousel-container {
 	width: 960px;
 	height: 86px;
 	background: url('images/carousel-bar.png') repeat-x;
-	margin-top: 134px;
+	margin-top: 230px;
 	overflow: hidden;
 }
 div#mini-carousel {
@@ -561,6 +561,9 @@ div#mini-carousel {
 	font-weight: 500;
 	text-transform: uppercase;
 	margin-bottom: 4px;
+}
+#carousel h4 {
+	font-size: 12px;
 }
 #carousel a h4:hover, #footer a h3:hover {
 	color: #d6da27;
@@ -610,8 +613,8 @@ div.carousel-stories {
 	padding: 0;
 }
 #carousel-menu ul li {
-	height: 50px;
-	width: 234px;
+	height: 26px;
+	width: 114px;
 }
 #carousel-menu ul li:last-child {
 	-moz-border-radius-bottomleft: 1.6em;
@@ -627,7 +630,7 @@ div.carousel-stories {
 	background: url(images/carousel-menuh.png);
 }
 #carousel-menu ul li h4 {
-	line-height: 50px;
+	line-height: 26px;
 }
 #carousel-menu ul li a {
 	text-decoration: none;

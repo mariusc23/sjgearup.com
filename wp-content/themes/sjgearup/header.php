@@ -96,7 +96,7 @@
         <div id="carousel-menu">
 			<ul id="carousel-list">
             	<li class="odd active"><a href="#" title="Top stories and current events from around the world."><h4>Top Stories</h4></a></li>
-            	<li class="even"><a href="#" title="Health and wellness articles."><h4>Health and Wellness</h4></a></li>
+            	<li class="even"><a href="#" title="Health and wellness articles."><h4>Health</h4></a></li>
             	<li class="odd"><a href="#" title="All about sports."><h4>Sports</h4></a></li>
             	<li class="even"><a href="#" title="Useful articles on technology."><h4>Tech</h4></a></li>
             </ul>
