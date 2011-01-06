@@ -1,42 +1,6 @@
 <?php
-/**
- * TwentyTen functions and definitions
- *
- * Sets up the theme and provides some helper functions. Some helper functions
- * are used in the theme as custom template tags. Others are attached to action and
- * filter hooks in WordPress to change core functionality.
- *
- * The first function, twentyten_setup(), sets up the theme by registering support
- * for various features in WordPress, such as post thumbnails, navigation menus, and the like.
- *
- * When using a child theme (see http://codex.wordpress.org/Theme_Development and
- * http://codex.wordpress.org/Child_Themes), you can override certain functions
- * (those wrapped in a function_exists() call) by defining them first in your child theme's
- * functions.php file. The child theme's functions.php file is included before the parent
- * theme's file, so the child theme functions would be used.
- *
- * Functions that are not pluggable (not wrapped in function_exists()) are instead attached
- * to a filter or action hook. The hook can be removed by using remove_action() or
- * remove_filter() and you can attach your own function to the hook.
- *
- * We can remove the parent theme's hook only after it is attached, which means we need to
- * wait until setting up the child theme:
- *
- * <code>
- * add_action( 'after_setup_theme', 'my_child_theme_setup' );
- * function my_child_theme_setup() {
- *     // We are providing our own filter for excerpt_length (or using the unfiltered value)
- *     remove_filter( 'excerpt_length', 'twentyten_excerpt_length' );
- *     ...
- * }
- * </code>
- *
- * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
- *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
- */
+// contact form for SJ Gear Up
+include_once('contact_form.php');
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -64,6 +28,19 @@ if (!is_admin()) {
 	Print the header posts in a row with featured thumbnails.
 ********************************/
 function get_featured_posts_in_category($category_id, $count = 4) {
+    /* should this ever be necessary, it's here...
+    global $wpdb;
+    $limit = $count * 3;
+    $posts = $wpdb->get_results(
+        "SELECT * FROM
+            wp_posts JOIN wp_term_relationships
+                ON (wp_posts.id = wp_term_relationships.object_id)
+         WHERE
+            post_status = 'publish'
+            AND term_taxonomy_id = {$category_id}
+        ORDER BY post_date DESC
+        LIMIT {$limit}");
+    */
 	$posts = get_posts('numberposts=' . ($count * 3) . '&orderby=date&order=desc&category=' . $category_id);
 	$count = 0;
 	$posts_with_image = array();
@@ -88,8 +65,8 @@ function header_featured_posts($carousel_posts, $display = true) { ?>
 						(/* $src, $width, $height */ $image = wp_get_attachment_image_src(
 							get_post_thumbnail_id( $post->ID ), 'post-thumbnail') )): ?>
 				<div class="carousel-desc"<?php if (!$first_post): ?> style="display: none;"<?php endif; ?>>
-					<a href="<?php echo get_permalink($post); ?>" title="Post description."><h4><?php echo $post->post_title; ?></h4></a>
-					<p><?php echo build_excerpt($post->post_content, 30); ?></p>
+					<a href="<?php echo get_permalink($post->ID); ?>" title="Post description."><h4><?php echo $post->post_title; ?></h4></a>
+					<p><?php echo build_excerpt($post, 30); ?></p>
 				</div><!--#carousel-desc -->
 			<?php
 			endif;
@@ -102,7 +79,7 @@ function header_featured_posts($carousel_posts, $display = true) { ?>
 					if (has_post_thumbnail($post->ID) &&
 						(/* $src, $width, $height */ $image = wp_get_attachment_image_src(
 							get_post_thumbnail_id( $post->ID ), 'post-thumbnail') )): ?>
-						<li class="carousel-img"><a href="/">
+						<li class="carousel-img"><a href="#">
 							<img src="<?php echo $image[0] ?>" width="100" height="56" alt="" />
 						</a></li>
 					<?php
@@ -300,13 +277,14 @@ add_filter( 'excerpt_length', 'sjgearup_excerpt_length' );
  Happy build_excerpt function that does what wordpress should have been doing :)
  Copied and pasted from WP source: function wp_trim_excerpt, wp-includes/formatting.php
  ********/
-function build_excerpt($text, $excerpt_length=55) {
+function build_excerpt($post, $excerpt_length=55) {
+    $text = $post->post_content;
 	$text = strip_shortcodes( $text );
 
 	$text = apply_filters('the_content', $text);
 	$text = str_replace(']]>', ']]&gt;', $text);
 	$text = strip_tags($text);
-	$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
+	$excerpt_more = ' &hellip;' . sjgearup_continue_reading_link($post->ID);
 	$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, 
 						PREG_SPLIT_NO_EMPTY);
 	if ( count($words) > $excerpt_length ) {
@@ -325,12 +303,13 @@ function build_excerpt($text, $excerpt_length=55) {
  * @since Twenty Ten 1.0
  * @return string "Continue Reading" link
  */
-function twentyten_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten' ) . '</a>';
+function sjgearup_continue_reading_link($id=0) {
+    $permalink = $id ? get_permalink($id) : get_permalink();
+	return ' <a href="'. $permalink . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten' ) . '</a>';
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyten_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and sjgearup_continue_reading_link().
  *
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_more filter hook.
@@ -339,7 +318,7 @@ function twentyten_continue_reading_link() {
  * @return string An ellipsis
  */
 function twentyten_auto_excerpt_more( $more ) {
-	return ' &hellip;' . twentyten_continue_reading_link();
+	return ' &hellip;' . sjgearup_continue_reading_link();
 }
 add_filter( 'excerpt_more', 'twentyten_auto_excerpt_more' );
 
@@ -354,7 +333,7 @@ add_filter( 'excerpt_more', 'twentyten_auto_excerpt_more' );
  */
 function twentyten_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= twentyten_continue_reading_link();
+		$output .= sjgearup_continue_reading_link();
 	}
 	return $output;
 }

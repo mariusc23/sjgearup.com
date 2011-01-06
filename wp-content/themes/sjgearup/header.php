@@ -79,8 +79,8 @@
 		if (count(array_intersect($category_ids, $FEATURED_CATEGORIES))): ?>
             <div id="carousel-bg" class="mini-carousel-bg">
                 <div id="carousel">
-                	<?php $posts = get_featured_posts_in_category($category_ids[0]);
-                    header_featured_posts($posts); ?>
+                	<?php $featured_posts = get_featured_posts_in_category($category_ids[0]);
+                    header_featured_posts($featured_posts); ?>
                 </div><!-- #mini-carousel -->
             </div><!-- #mini-carousel-bg -->
 		<?php endif; ?>

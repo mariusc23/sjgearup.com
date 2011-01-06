@@ -1,12 +1,15 @@
 <?php
-define('FROM_CONTACT', 'Titu Andreescu <tandreescu@gmail.com>');
+define('FROM_CONTACT', 'Paul Craciunoiu (testing) <paul.craciunoiu@gmail.com>');
 /* Contact form handling here */
 if ($_POST['contact'] || $_POST['contact_email']) {
-    require_once( '../../../wp-load.php' );
+    require_once( 'wp-load.php' );
     $contact_invalid = array();
     $contact_data = array();
     $contact_data['name'] = filter_var($_POST['contact_name'], FILTER_SANITIZE_STRING);
-    $contact_data['message'] = filter_var($_POST['contact_message'], FILTER_SANITIZE_STRING);
+    // for some reason idiotic wordpress escapes quotes
+    $message = str_replace('\"', '"', $_POST['contact_message']);
+    $message = str_replace("\'", "'", $message);
+    $contact_data['message'] = filter_var($message, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_AMP);
     $contact_data['email'] = filter_var($_POST['contact_email'], FILTER_VALIDATE_EMAIL);
     foreach ($contact_data as $contact_key => $contact_field) {
         if (!$contact_field) {
@@ -14,7 +17,7 @@ if ($_POST['contact'] || $_POST['contact_email']) {
         }
     }
 
-    if (!$contact_invalid && !$_COOKIE['awesomemath_contact']) {
+    if (!$contact_invalid && !$_COOKIE['sjgearup_contact']) {
         $comment_post_ID = 228;
         $comment_author = $contact_data['name'];
         $comment_author_email = $contact_data['email'];
@@ -27,26 +30,26 @@ if ($_POST['contact'] || $_POST['contact_email']) {
         $commentdata = compact('comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content', 'comment_type', 'comment_parent', 'user_ID');
         $comment_id = wp_new_comment( $commentdata );
         $comment_approved = $wpdb->get_results( "SELECT (comment_approved = 'spam') AS spam FROM wp_comments WHERE comment_ID = '{$comment_id} LIMIT 1;'");
-        setcookie('awesomemath_contact', 1, time() + 300, '/');
+        setcookie('sjgearup_contact', 1, time() + 300, '/');
         if ($comment_id && !$comment_approved[0]->spam) {
             $success = true;
             // not spam!
             $contact_headers = "From: {$contact_data['name']} <{$contact_data['email']}>\r\nBCC: mariuscraciunoiu@gmail.com,paulcraciunoiu@gmail.com\r\n"
                 . "Content-Type: text/html; charset=iso-8859-1\r\n";
-            if (!wp_mail(FROM_CONTACT, 'AwesomeMath Contact Form Message'
+            if (!wp_mail(FROM_CONTACT, 'SJ Gear Up Contact Message'
                 , '<pre style="font-family: Helvetica, Arial, sans-serif">' . $contact_data['message'] . '</pre>', $contact_headers)) {
                 $success = false;
             }
             $contact_headers = "From: " . FROM_CONTACT . "\r\n" . 'Reply-To: ' . FROM_CONTACT . "\r\nContent-Type: text/html; charset=iso-8859-1\r\n";
-            if (!wp_mail("{$contact_data['name']} <{$contact_data['email']}>", 'Thank you for contacting AwesomeMath'
-                , '<p>Thank you for contacting AwesomeMath. We will get back to you shortly.</p>
+            if (!wp_mail("{$contact_data['name']} <{$contact_data['email']}>", 'Thank you for contacting SJ Gear Up'
+                , '<p>Thank you for contacting SJ Gear Up. We will get back to you shortly.</p>
 
 <p>Below is a copy of your message.
 If for any reason we do not get back to you soon, simply reply to this email.</p>
 
 <p>------------------------------</p>
 
-<pre>' . $contact_data['message'] . '</pre>', $contact_headers)) {
+<pre style="font-family: Helvetica, Arial, sans-serif">' . $contact_data['message'] . '</pre>', $contact_headers)) {
                 $success = false;
             }
 
@@ -61,7 +64,7 @@ If for any reason we do not get back to you soon, simply reply to this email.</p
             header("Location: {$_SERVER['HTTP_REFERER']}?contacted");
             die;
         } else {
-            wp_mail('mariuscraiunoiu@gmail.com', 'AwesomeMath Contact Form Message'
+            wp_mail('mariuscraiunoiu@gmail.com', 'SJ Gear Up Contact Form Message'
                 , $contact_data['message'], "From: {$contact_data['name']} <{$contact_data['email']}>\r\nBCC: paulcraciunoiu@gmail.com\r\n");
         }
     }
