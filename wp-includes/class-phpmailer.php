@@ -78,14 +78,14 @@ class PHPMailer {
    * Sets the From name of the message.
    * @var string
    */
-  var $FromName          = 'Root User';
+  var $FromName          = 'SJ Gear Up';
 
   /**
    * Sets the Sender email (Return-Path) of the message.  If not empty,
    * will be sent via -f to sendmail or as 'MAIL FROM' in smtp mode.
    * @var string
    */
-  var $Sender            = '';
+  var $Sender            = 'contactus@sjgearup.com';
 
   /**
    * Sets the Subject of the message.
@@ -882,7 +882,8 @@ class PHPMailer {
     $from = array();
     $from[0][0] = trim($this->From);
     $from[0][1] = $this->FromName;
-    $result .= $this->AddrAppend('From', $from);
+	$result .= $this->AddrAppend('From', $from);
+	$result .= $this->AddrAppend('Envelope-from', $from);
 
     /* sendmail and mail() extract Cc from the header before sending */
     if((($this->Mailer == 'sendmail') || ($this->Mailer == 'mail')) && (count($this->cc) > 0)) {
