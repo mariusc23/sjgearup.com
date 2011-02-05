@@ -388,7 +388,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 			$sitename = substr( $sitename, 4 );
 		}
 
-		$from_email = 'wordpress@' . $sitename;
+		$from_email = 'contactus@' . $sitename;
 	}
 
 	// Plugin authors can override the potentially troublesome default
