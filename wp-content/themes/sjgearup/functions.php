@@ -573,7 +573,7 @@ function create_help_page() {
   add_submenu_page('themes.php?goto=help-page', __('Insert img in post','insert-img'), __('Insert img in post','insert-img'), 'manage_options', 'themes.php?goto=help-page-six');
   add_submenu_page('themes.php?goto=help-page', __('Post video on home','post-video'), __('Post video on home','post-video'), 'manage_options', 'themes.php?goto=help-page-seven');
   add_submenu_page('themes.php?goto=help-page', __('Edit menu','edit-menu'), __('Edit menu','edit-menu'), 'manage_options', 'themes.php?goto=help-page-eight');
-  
+  add_submenu_page('themes.php?goto=help-page', __('Redirect post','redirect-post'), __('Redirect post','redirect-post'), 'manage_options', 'themes.php?goto=help-page-nine');
 }
 
 add_action('after_setup_theme', 'redirect_from_admin_menu');
@@ -628,6 +628,9 @@ function redirect_from_admin_menu($value) {
         break;
 	  case 'help-page-eight':
         wp_redirect("../editing-the-menu");
+        break;
+	  case 'help-page-nine':
+        wp_redirect("../redirect-post");
         break;
       default:
         wp_safe_redirect('/wp-admin/');
